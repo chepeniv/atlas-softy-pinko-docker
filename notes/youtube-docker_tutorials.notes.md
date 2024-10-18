@@ -11,7 +11,7 @@ the three primary components of docker are
 ### the `Dockerfile`
 
 this tells docker how to build an image
-```docker
+```dockerfile
 FROM ubuntu:20.04
 
 # executes command in the image construction
