@@ -1,0 +1,29 @@
+# build -- build from dockerfile
+#     context -- location 
+#     dockerfile -- alternate dockerfile
+# images -- build from base image
+# ports -- system and container ports used for communication
+# depends_on -- an image this image depends on
+#
+# volumes -- 
+#     mount directories outside of containters
+#     into their filesystem, making live iteration possible
+# 
+# build - docker-compose build 
+# run - docker-compose up 
+
+name: task4-compose
+
+services:
+  nginx_frontend:
+    build:
+      context: ./front-end/
+    ports:
+      - "9000:9000"
+    depends_on:
+      - flask_backend
+  flask_backend:
+    build:
+      context: ./back-end/
+    ports:
+      - "5252:5252"
