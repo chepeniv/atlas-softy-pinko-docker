@@ -1,0 +1,25 @@
+services:
+
+  nginx_web:
+    build:
+      context: ./front-end/
+    ports:
+      - "9000"
+    depends_on:
+      - flask_api
+      - nginx_proxy
+
+  flask_api:
+    build:
+      context: ./back-end/
+    depends_on:
+      - nginx_proxy
+    ports:
+      - "5252"
+
+  nginx_proxy:
+      build:
+        context: ./proxy/
+        dockerfile: Dockerfile
+      ports:
+        - "80:80"
